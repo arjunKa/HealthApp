@@ -26,6 +26,11 @@ public:
 
 	void writeString(const char* field, const char* value);
 
+	void getCalories(const char* field);
+
+
+	void setCalories(const char* date, int calories);
+
 };
 
 Document Json::getDoc()
@@ -51,6 +56,70 @@ Document Json::getDoc()
 		std::cout << "test";
 	}
 	return doc;
+}
+
+void Json::setCalories(const char* date, int calories)
+{
+	Document document = getDoc();
+
+	// Check if the "trackCalories" field is an array
+	if (document.HasMember("trackCalories") && document["trackCalories"].IsArray()) {
+		Value newElement(kObjectType);  // Create a new object
+
+		Value dateValue;
+		dateValue.SetString(date, document.GetAllocator());
+		newElement.AddMember("date", dateValue, document.GetAllocator());
+
+		Value caloriesValue;
+		caloriesValue.SetInt(250);
+		newElement.AddMember("calories", caloriesValue, document.GetAllocator());
+
+		document["trackCalories"].PushBack(newElement, document.GetAllocator());
+
+		// Write the modified JSON back to a string
+		StringBuffer buffer;
+		Writer<StringBuffer> writer(buffer);
+		document.Accept(writer);
+
+		// Save the modified JSON back to the file
+		std::ofstream output("data.json");
+		output << buffer.GetString() << std::endl;
+
+		std::cout << "Element added to the array." << std::endl;
+	}
+	else {
+		std::cerr << "Field 'trackCalories' not found or not an array." << std::endl;
+	}
+
+
+}
+
+void Json::getCalories(const char* field)
+{
+	Document document = getDoc();
+
+	// Check if the field is an array
+	if (document.HasMember(field) && document[field].IsArray()) {
+		const Value& jsonArray = document[field];
+
+		// Iterate through the array elements
+		for (SizeType i = 0; i < jsonArray.Size(); ++i) {
+			const Value& element = jsonArray[i];
+			if (element.IsObject()) {
+				if (element.HasMember("date") && element.HasMember("calories")) {
+					const char* dateValue = element["date"].GetString();
+					int caloriesValue = element["calories"].GetInt();
+					std::cout << "Element " << i << ": Date: " << dateValue << ", Calories: " << caloriesValue << std::endl;
+				}
+			}
+		}
+	}
+	else {
+		std::cerr << "Field " << field << " not found or not an array." << std::endl;
+	}
+
+
+
 }
 
 int Json::getJsonInt(const char* field)
@@ -91,7 +160,7 @@ string Json::getJsonString(const char* field)
 			return doc[field].GetString();
 
 	}
-	else 
+	else
 	{
 		std::cerr << "Field " << field << " not found or not a string." << std::endl;
 	}
@@ -181,7 +250,7 @@ void Json::write(string field, Value value)
 	  }*/
 
 
-	// Write the modified JSON back to a string
+	  // Write the modified JSON back to a string
 	StringBuffer buffer;
 	Writer<StringBuffer> writer(buffer);
 	document.Accept(writer);

@@ -1,1 +1,1 @@
-{"field":"userDetails","name":"arjun","age":1,"weight":2,"gender":"M","height":3,"weightPlan":[{"days":0,"weightTarget":0}],"exercisePlan":[{}]}
+{"field":"userDetails","name":"arjun","age":1,"weight":2,"gender":"M","height":3,"weightPlan":[{"days":0,"weightTarget":0}],"trackCalories":[{"date":"","calories":0},{"date":"06/22/2023","calories":250},{"date":"null","calories":250},{"date":"w","calories":250}]}

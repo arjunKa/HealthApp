@@ -12,4 +12,6 @@ public:
 	void write(string field, Value value);
 
 	void writeString(const char* field, const char* value);
+	void getCalories(const char* field);
+	void setCalories(const char* date, int calories);
 };

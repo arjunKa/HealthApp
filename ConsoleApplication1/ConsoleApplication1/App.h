@@ -17,5 +17,6 @@ public:
 	void setData();
 	void getData();
 	void weightPlan();
+	void calorieTracker();
 	void options();
 };

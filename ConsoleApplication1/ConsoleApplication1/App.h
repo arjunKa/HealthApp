@@ -12,11 +12,12 @@ public:
 	void setAge(int data);
 	void setGender(const char* data);
 	void setName(const char* data);
-	double calculateBMI(double weight, double height);
+	void calculateBMI(double weight, double height);
 	double calculateWeightGain(double weightToGain, double days);
 	void setData();
 	void getData();
 	void weightPlan();
 	void calorieTracker();
+	void logo();
 	void options();
 };

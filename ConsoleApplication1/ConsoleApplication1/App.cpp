@@ -24,13 +24,14 @@ public:
 	void setAge(int data);
 	void setGender(const char* data);
 	void setName(const char* data);
-	double calculateBMI(double weight, double height);
+	void calculateBMI(double weight, double height);
 	double calculateWeightGain(double weightToGain, double days);
 	void setData();
 	void getData();
 	void weightPlan();
 	void calorieTracker();
 	void options();
+	void logo();
 
 };
 
@@ -59,16 +60,20 @@ void HealthApp::setGender(const char* data)
 	gender = data;
 }
 
-double HealthApp::calculateBMI(double weight, double height)
+void HealthApp::calculateBMI(double weight, double height)
 {
+	double bmi = 0;
 	try
 	{
-		return 703 * (weight / pow(height, 2));
+		bmi = 703 * (weight / pow(height, 2));
 	}
 	catch (const std::exception& ex)
 	{
 		std::cout << "error";
 	}
+
+	cout << "Your BMI is " << round(bmi*100.0)/100.0 <<endl;
+	options();
 
 
 }
@@ -258,15 +263,30 @@ void HealthApp::options()
 
 }
 
+void HealthApp::logo()
+{
+	std::cout << "  *****     *****" << std::endl;
+	std::cout << "********   ********" << std::endl;
+	std::cout << "*******************" << std::endl;
+	std::cout << " *****************" << std::endl;
+	std::cout << "  ***************" << std::endl;
+	std::cout << "    ***********" << std::endl;
+	std::cout << "      *******" << std::endl;
+	std::cout << "        ***" << std::endl;
+}
+
 
 int main()
 {
+	std::cout << "Welcome to the Health App." << std::endl;
 	HealthApp h;
 	h.setWeight(h.j.getJsonInt("weight"));
 	h.setHeight(h.j.getJsonInt("height"));
 	h.setAge(h.j.getJsonInt("age"));
 	h.setName(h.j.getJsonString("name").c_str());
 	h.setGender(h.j.getJsonString("gender").c_str());
+
+
 
 	h.options();
 

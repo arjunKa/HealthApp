@@ -1,1 +1,29 @@
-{"field":"userDetails","name":"arjun","age":1,"weight":2,"gender":"M","height":3,"weightPlan":[{"days":0,"weightTarget":0}],"trackCalories":[{"date":"","calories":0},{"date":"06/22/2023","calories":250},{"date":"null","calories":250},{"date":"w","calories":250}]}
+{
+  "field": "userDetails",
+  "name": "Arjun",
+  "age": 0,
+  "weight": 140,
+  "gender": "M",
+  "height": 69,
+  "weightPlan": [
+    {
+      "days": 0,
+      "weightTarget": 0
+    }
+  ],
+  "trackCalories": [
+
+    {
+      "date": "06/22/2023",
+      "calories": 250
+    },
+    {
+      "date": "06/21/2023",
+      "calories": 260
+    },
+    {
+      "date": "06/20/2023",
+      "calories": 350
+    }
+  ]
+}

@@ -1,7 +1,3 @@
-
-
-
-
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -9,8 +5,6 @@
 #include "rapidjson/writer.h"
 #include "App.h"
 #include <rapidjson/document.h>
-
-
 
 using namespace std;
 using namespace rapidjson;
